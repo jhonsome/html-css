@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neon com efeito de falha">
+  <meta name="author" content="Jhon">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://jhonsome.github.io/html-css/tutoriais/neon-effect/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Neon piscando com CSS">
+  <meta property="og:description" content="Neon com efeito de falha">
+  <meta property="og:image" itemprop="image" content="https://jhonsome.github.io/html-css/tutoriais/neon-effect/media/preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="jhonsome.github.io">
+  <meta property="twitter:url" content="https://jhonsome.github.io/html-css/tutoriais/neon-effect/">
+  <meta name="twitter:title" content="Fundo animado com CSS">
+  <meta name="twitter:description" content="Neon com efeito de falha">
+  <meta name="twitter:image" content="https://jhonsome.github.io/html-css/tutoriais/neon-effect/media/preview.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script src="../main.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css" integrity="sha512-rO+olRTkcf304DQBxSWxln8JXCzTHlKnIdnMUwYvQa9/Jd4cQaNkItIUj6Z4nvW1dqK0SKXLbn9h4KwZTNtAyw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js" integrity="sha512-IaaKO80nPNs5j+VLxd42eK/7sYuXQmr+fyywCNA0e+C6gtQnuCXNtORe9xR4LqGPz5U9VpH+ff41wKs/ZmC3iA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="https://jhonsome.github.io/web/main/media/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <title>Neon piscando com CSS</title>
+</head>
+<body onload="Main()">
+  <header>
+    <nav>
+      <a href="https://jhonsome.github.io/web/" target="_self">Home</a>
+      <a href="https://jhonsome.github.io/web/project-list.html", target="_self">Projetos</a>
+      <a href="https://jhonsome.github.io/web/tutorial-list.html" target="_self">Tutoriais</a>
+      <a href="https://jhonsome.github.io/web/class-list.html" target="_self">Aulas</a>
+    </nav>
+    <h1>Neon piscando com CSS</h1>
+  </header>
+  <main>
+    <p>Saiba como criar um efeito de neon piscando com CSS.</p>
+    <p>Pule para o final para o <a href="#full-code">código completo</a>.</p>
+    <article>
+      <h1>HTML</h1>
+      <p>Vamos começar com o html básico:</p>
+      <pre><code id="c1"></code></pre>
+      <p>Nesse efeito, algumas letras irão piscar. Para isso, colocaremos essas letras dentro de <span class="code">&lt;span&gt;</span> tags.</p>
+      <pre><code id="c2"></code></pre>
+      <h1>CSS</h1>
+      <p>Vamos aplicar uma fonte light e umas sombras no texto para dar o efeito de neon.</p>
+      <pre><code>body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 4.5em;
+  font-weight: lighter;
+  text-shadow: 
+    0px 0px 30px lime,
+    0px 0px 20px lime,
+    0px 0px 10px lime, 
+    0px 0px 5px lime;
+}</code></pre>
+      <p>Passamos 4 valores a cada sombra no <span class="code">text-shadow</span>, sendo o deslocamento no eixo x, deslocamento no eixo y, espalhamento e cor da sombra.</p>
+      <p>Deixaremos o deslocamento da sombra com 0 em ambos os eixos para que permaneça no meio do texto.</p>
+      <p>Definimos 4 sombras com espalhamento diferente para obter uma sombra destacada.</p>
+      <p>Definimos o fundo do <span class="code">&lt;body&gt;</span> preto, para dar destaque ao texto.</p>
+      <img loading="lazy" src="media/stage1.jpg" alt="Preview 1">
+      <p>Para fazer as letras piscarem, devemos criar uma animação utilizando o <span class="code">@keyframes</span>.</p>
+      <pre><code>@keyframes animate {
+  20%, 36%, 48% {
+    text-shadow:
+      0px 0px 0px lime;
+      0px 0px 0px lime,
+      0px 0px 0px lime,
+      0px 0px 0px lime;
+    color: #818181;
+  }
+        
+  22%, 37%, 50% {
+    text-shadow:
+      0px 0px 30px lime;
+      0px 0px 20px lime,
+      0px 0px 10px lime,
+      0px 0px 5px lime;
+    color: #FFFFFF;
+  }
+}</code></pre>
+      <p>A animação alterna o espalhamento das sombras e a cor da letra.</p>
+      <p>As sombras alternam entre 0 e seu valor inicial, enquanto o texto altera sua cor entre cinza e branco para dar um efeito de luz desligada.</p>
+      <p>Para animar de fato, utilizaremos a propriedade <span class="code">animation</span>.</p>
+      <pre><code>p > span:nth-child(1) {
+  animation: animate 1s linear infinite;
+}
+      
+p > span:nth-child(2) {
+  animation: animate 2s linear infinite;
+}
+      
+p > span:nth-child(3) {
+  animation: animate 800ms linear infinite;
+}</code></pre>
+      <p>As três <span class="code">&lt;span&gt;</span> tags devem ser animadas individualmente com tempo de execução diferente, dando assim um efeito de aleatoriedade.</p>
+      <p>Este é o resultado:</p>
+      <iframe loading="lazy" src="iframe.html" frameborder="0"></iframe>
+      <p id="full-code">Código completo:</p>
+      <button onclick="CopyToClipboard(document.querySelector('textarea#clipboard'))">Copiar</button>
+      <button onclick="window.location.href = 'iframe.html'">Visualizar em tela cheia</button>
+      <textarea id="clipboard" hidden></textarea>
+      <pre><code id="c3"></code></pre>
+    </article>
+  </main>
+  <footer>
+    <div>
+      <a href="https://instagram.com/jhon.something/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/message/EJWCBTNCCIZCL1/" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://t.me/JhonUxu/" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://github.com/jhonsome/" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="mailto:jhonsomething888@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+    </div>
+    <p class="small">Site criado por <a href="https://instagram.com/jhon.something/">Jhon</a></p>
+  </footer>
+</body>
+</html>
